@@ -34,7 +34,7 @@
             <div class="fader">
                 <div class="container">
                     <h1 class="text-white">Тысячи грузовых машин в вашем распоряжении</h1>
-                    <p-button class="mt-5 mb-3" type="is-success" size="is-large">Разместить объявление о грузе
+                    <p-button class="mt-5 mb-3" type="is-success" size="is-medium">Разместить объявление о грузе
                     </p-button>
                     <p class="text-white">
                         Нужна работа? <a class="text-white link-underlined" href="#">Зарегистрируйтесь исполнителем</a>
