@@ -1,0 +1,2 @@
+@realsoft:registry=https://gitlab.com/api/v4/packages/npm/
+//gitlab.com/api/v4/packages/npm/:_authToken=<insert token here from gitlab to access npm package>

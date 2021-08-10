@@ -1,0 +1,28 @@
+@import '~@realsoft/platon-core/dist/platon.css';
+@import '~platon-ui/scss/platon-ui.scss';
+
+@import './_colors';
+@import './_toolbar';
+@import './_typography';
+@import './_spacings';
+
+body {
+  color: #282828;
+}
+.container {
+  width: 1250px;
+}
+.text-hint {
+  color: $secondary-text-color;
+}
+.fader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 40, 0.8);
+}
+.link-underlined {
+  text-decoration: underline;
+}

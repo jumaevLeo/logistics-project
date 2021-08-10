@@ -1,0 +1,27 @@
+.p-toolbar {
+  height: 55px;
+  line-height: 55px;
+  width: 100%;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-between;
+
+  & > .p-toolbar-list {
+    & > li {
+      vertical-align: middle;
+      padding: 8px 12px;
+      line-height: 100%;
+      display: inline-block;
+
+      & .brand-logo {
+        display: inline-block;
+        height: 100%;
+      }
+
+      & .pui-icon {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+

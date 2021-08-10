@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Login api</title>
+</head>
+<body>
+
+<script>
+window.addEventListener('message', function ({data, origin}) {
+  let payload = JSON.parse(data)
+
+  localStorage['auth_token'] = payload.token
+  localStorage['auth_user'] = JSON.stringify(payload.user)
+
+  window.parent.postMessage('done', origin)
+})
+</script>
+</body>
+</html>
