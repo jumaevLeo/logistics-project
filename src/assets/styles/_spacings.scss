@@ -175,3 +175,8 @@
     margin-right: 24px;
   }
 }
+
+.dg-row-gap-2 {
+  grid-column-gap : 16px;
+  //grid-template-rows: auto;
+}

@@ -13,7 +13,7 @@
                 <li>Исполнителю
                     <p-icon icon="mdi mdi-chevron-down"/>
                 </li>
-                <li class="text-orange">
+                <li class="is-warning">
                     <p-icon icon="mdi mdi-crown-outline"/>
                     Premium
                 </li>
@@ -26,7 +26,7 @@
                 </li>
                 <li>Вход</li>
                 <li>
-                    <p-button size="is-small" type="is-primary">Регистрация</p-button>
+                    <p-button size="is-small">Регистрация</p-button>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,8 @@
             <div class="fader">
                 <div class="container">
                     <h1 class="text-white">Тысячи грузовых машин в вашем распоряжении</h1>
-                    <p-button class="mt-5 mb-3" type="is-success" size="is-medium">Разместить объявление о грузе
+                    <p-button class="mt-5 mb-3" type="is-success" size="is-medium">
+                        Разместить объявление о грузе
                     </p-button>
                     <p class="text-white">
                         Нужна работа? <a class="text-white link-underlined" href="#">Зарегистрируйтесь исполнителем</a>
@@ -42,60 +43,140 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="position: relative">
-            <div class="mx-5 form-container px-5 pt- width-100p">
-                <h4 class="mb-2">Рассчитать стоимость перевозки</h4>
-                <div style="display: flex">
-                    <div class="width-25p pr-2">
-                        <p-select v-model='from' label='Откуда' :options="fromOptions"/>
-                    </div>
-                    <div class="width-25p px-2">
-                        <p-select v-model='to' label='Откуда' :options="toOptions"/>
-                    </div>
-                    <div class="width-20p px-2">
-                        <p-select v-model='type' label='Тип груза' :options="cargoTypes"/>
-                    </div>
-                    <div class="width-10p px-2">
-                        <p-select v-model='type' label='Вес' :options="weightCategories"/>
-                    </div>
-                    <div class="width-20p pl-2">
-                        <p-button class="width-100p">Рассчитать</p-button>
-                    </div>
+        <div class="position-relative container-small form-container px-5 width-100p">
+            <h4 class="mb-2">Рассчитать стоимость перевозки</h4>
+            <div class="row">
+                <div class="col-3">
+                    <p-select v-model="search.from" label='Откуда' :options="fromOptions"/>
                 </div>
-                <p class="text-hint">
-                    <span class="text-danger b-toaster-top-right">*</span>
-                    Стоимость перевозки рассчитывается исходя из средних показателей предложенния на рынке исполнителей.
-                    Конечная сумма может сильно разнится с указанной в зависимости от груза, даты перевозки и других
-                    факторов.
-                </p>
+                <div class="col-3">
+                    <p-select v-model="search.to" label='Куда' :options="toOptions"/>
+                </div>
+                <div class="col-2">
+                    <p-select v-model="search.type" label='Тип груза' :options="cargoTypes"/>
+                </div>
+                <div class="col-2">
+                    <p-select v-model="search.weight_category" label='Вес' :options="weightCategories"/>
+                </div>
+                <div class="col-2">
+                    <p-button class="width-100p" style="height: 3.5rem;">Рассчитать</p-button>
+                </div>
             </div>
+            <p class="is-hint mt-3">
+                <span class="text-danger b-toaster-top-right">*</span>
+                Стоимость перевозки рассчитывается исходя из средних показателей предложенния на рынке исполнителей.
+                Конечная сумма может сильно разнится с указанной в зависимости от груза, даты перевозки и других
+                факторов.
+            </p>
         </div>
         <!-- @todo-->
-        <div class="container" style="margin-top: 250px">
-            <h4 class="mb-2">Каталог грузовых машин</h4>
-            <div style="display: flex">
-                <ul>
-                    <li>Тентованный полуприцеп</li>
-                    <li>"Jumbo"</li>
-                    <li>"Автосцепка"</li>
+        <div class="container-small mb-5">
+            <h3 class="mb-4">Каталог грузовых машин</h3>
+            <div class="row">
+                <ul class="col-3">
+                    <li class="mb-3"><a href="#" class="is-underlined">Тентованный полуприцеп</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">"Jumbo"</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">"Автосцепка"</a></li>
                 </ul>
-                <ul>
-                    <li>Платформа грузов</li>
-                    <li>Автовоз</li>
-                    <li>Трал для спецтехники</li>
+                <ul class="col-3">
+                    <li class="mb-3"><a href="#" class="is-underlined">Платформа грузов</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Автовоз</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Трал для спецтехники</a></li>
                 </ul>
-                <ul>
-                    <li>Изотермический фургон</li>
-                    <li>Контейнеровоз</li>
-                    <li>Строительная</li>
+                <ul class="col-3">
+                    <li class="mb-3"><a href="#" class="is-underlined">Изотермический фургон</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Контейнеровоз</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Строительная</a></li>
                 </ul>
-                <ul>
-                    <li>Рефрижераторный фургон</li>
-                    <li>Автоцистерна</li>
-                    <li>Спецтехника</li>
+                <ul class="col-3">
+                    <li class="mb-3"><a href="#" class="is-underlined">Рефрижераторный фургон</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Автоцистерна</a></li>
+                    <li class="mb-3"><a href="#" class="is-underlined">Спецтехника</a></li>
                 </ul>
             </div>
         </div>
+        <div class="mobile-app-info-container container-fluid overflow-hidden">
+            <div class="container-small mx-auto">
+                <div class="row">
+                    <div class="col-6">
+                        <span class="text-white download-text">
+                            Загрузите приложение Carting,<br>
+                            и получите Premium на 1 месяц бесплатно
+                        </span>
+                        <div class="row mt-4">
+                            <div class="col-4">
+                                <a href="#"><img src="@/assets/img/appstore.svg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#"><img src="@/assets/img/googleplay.svg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#"><img src="@/assets/img/appgallery.svg" alt=""></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-6 position-relative">
+                        <div class="position-absolute phone-mock">
+                            <img src="@/assets/img/phone.svg" alt="Cargting mobile app QR">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="container-small my-5">
+            <div class="row">
+                <div class="col-3">
+                    <h4 class="mb-2">Заказчикам</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="is-hint">Пользовательское соглашение</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Как выбрать исполнителя</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Оплата и доставка</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Обратная связь</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">О сервисе</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Возвраты</a></li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4 class="mb-2">Исполнителям</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="is-hint">Личный кабинет исполнителя</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Регистрация исполнителя</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Справка для исполнителей</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Сайт для партнёров</a></li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4 class="mb-2">Сотрудничество</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="is-hint">Новости компании</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Партнёрская программа</a></li>
+                        <li class="mb-2"><a href="#" class="is-hint">Работа с брендом</a></li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4 class="mb-2">Мы в социальных сетях</h4>
+                    <a href="#" class="is-primary-text">
+                        <p-icon class="mr-3" size="is-medium" icon="mdi mdi-facebook"></p-icon>
+                    </a>
+                    <a href="#" class="is-primary-text">
+                        <p-icon class="mr-3" size="is-medium" icon="mdi mdi-youtube"></p-icon>
+                    </a>
+                    <a href="#" class="is-primary-text">
+                        <p-icon class="mr-3" size="is-medium" icon="mdi mdi-instagram"></p-icon>
+                    </a>
+                    <a href="#" class="is-primary-text">
+                        <p-icon class="mr-3" size="is-medium" icon="mdi mdi-telegram"></p-icon>
+                    </a>
+                    <p class="is-hint mt-3">Разработано</p>
+                    <a href="https://realsoft.uz"><img src="@/assets/img/vendor.svg" alt="$appName"></a>
+                </div>
+            </div>
+            <div class="my-4 is-hint">
+                © {{year}} — OOO «Carting»
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -104,6 +185,7 @@
         name: 'Home',
         data() {
             return {
+                year: (new Date).getFullYear(),
                 search: {
                     from: 'TASH',
                     to: 'SAM',
@@ -136,6 +218,8 @@
 </script>
 
 <style lang="scss">
+    @import '@/assets/styles/_colors';
+
     .call-to-action-bar {
         min-height: 450px;
         position: relative;
@@ -157,11 +241,25 @@
         background: #F6F6F6;
         border-radius: 12px;
         padding: 36px;
-        position: absolute;
         top: -56px;
     }
 
     .pui-select {
         background: white !important;
+    }
+
+    .form-elem {
+        box-sizing: border-box;
+    }
+
+    .mobile-app-info-container {
+        background: $primary-color;
+        padding: 48px;
+        & .download-text {
+            font-size: 22px;
+        }
+        & .phone-mock {
+            right: 0;
+        }
     }
 </style>

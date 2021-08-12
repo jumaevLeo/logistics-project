@@ -1,1 +1,21 @@
-$secondary-text-color : #989898;
+$primary-color : #72B819;
+$secondary-color : #2979FF;
+$secondary-accent-color : #E0ECFF;
+$hint-text-color : #989898;
+$danger-color : #FF4269;
+$warning-color: #FF8A00;
+
+$primary-text-color : #282828;
+
+.is-warning {
+  color: $warning-color;
+}
+.is-danger {
+  color: $danger-color;
+}
+.is-primary {
+  color: $primary-color;
+}
+.bg-primary {
+  background: $primary-color!important;
+}

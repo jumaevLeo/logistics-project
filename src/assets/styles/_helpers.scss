@@ -1,0 +1,22 @@
+.display {
+  //&-flex {
+  //  display: flex;
+  //}
+  &-inline-block {
+    display: inline-block;
+  }
+  &-block {
+    display: block;
+  }
+  &-grid {
+    display: grid;
+  }
+}
+
+.is-hint {
+  color: $hint-text-color;
+}
+
+.is-primary-text {
+  color: $primary-text-color;
+}
