@@ -27,8 +27,12 @@ html, body {
   background: rgba(40, 40, 40, 0.8);
 }
 
-a:hover {
-  color: $primary-color;
+a {
+  transition: all 0.5s ease;
+  color: $link-primary-color;
+  a:hover {
+    color: $primary-color;
+  }
 }
 
 .link-underlined {

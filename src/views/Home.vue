@@ -24,7 +24,7 @@
                     Русский
                     <p-icon icon="mdi mdi-chevron-down"/>
                 </li>
-                <li>Вход</li>
+                <li><a @click="$router.push({name: 'portal.cars.list'})">Вход</a></li>
                 <li>
                     <p-button size="is-small">Регистрация</p-button>
                 </li>

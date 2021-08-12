@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    miniDrawer: false,
   },
+
   mutations: {
+    setDrawer(state, val) {
+      state.miniDrawer = val
+    }
   },
+
   actions: {
   },
+
   modules: {
   }
 })

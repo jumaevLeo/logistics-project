@@ -1,20 +1,6 @@
-.display {
-  //&-flex {
-  //  display: flex;
-  //}
-  &-inline-block {
-    display: inline-block;
-  }
-  &-block {
-    display: block;
-  }
-  &-grid {
-    display: grid;
-  }
-}
 
 .is-hint {
-  color: $hint-text-color;
+  color: $hint-color;
 }
 
 .is-primary-text {
