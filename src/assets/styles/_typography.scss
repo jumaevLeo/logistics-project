@@ -3,11 +3,13 @@ h1 {
   font-weight: bold;
   color: $primary-text-color;
 }
+
 h2 {
   font-size: 36px;
   font-weight: bold;
   color: $primary-text-color;
 }
+
 h3 {
   font-size: 24px;
   font-weight: bold;
@@ -22,4 +24,12 @@ h4 {
 
 .is-underlined {
   text-decoration: underline;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+.text-lg {
+  font-size: 18px;
 }

@@ -28,13 +28,22 @@ html, body {
 }
 
 a {
-  transition: all 0.5s ease;
+  transition: all .3s ease-in-out;
   color: $link-primary-color;
+
   a:hover {
     color: $primary-color;
   }
 }
 
+.pui-icon {
+  transition: color .2s ease-in-out;
+}
+
 .link-underlined {
   text-decoration: underline;
+}
+
+.pui-button.is-success {
+  @extend .bg-primary;
 }

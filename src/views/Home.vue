@@ -24,7 +24,7 @@
                     Русский
                     <p-icon icon="mdi mdi-chevron-down"/>
                 </li>
-                <li><a @click="$router.push({name: 'portal.cars.list'})">Вход</a></li>
+                <li><a @click="$router.push({name: 'portal.vehicles.list'})">Вход</a></li>
                 <li>
                     <p-button size="is-small">Регистрация</p-button>
                 </li>
@@ -182,7 +182,8 @@
 
 <script>
     export default {
-        name: 'Home',
+        name: 'home',
+
         data() {
             return {
                 year: (new Date).getFullYear(),
@@ -255,9 +256,11 @@
     .mobile-app-info-container {
         background: $primary-color;
         padding: 48px;
+
         & .download-text {
             font-size: 22px;
         }
+
         & .phone-mock {
             right: 0;
         }

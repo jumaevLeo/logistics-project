@@ -5,18 +5,25 @@ Vue.use(VueRouter)
 
 import Home from '@/views/Home'
 import VehiclesList from '@/views/VehiclesList'
+import OrdersList from '@/views/OrdersList'
 import Page404 from '@/views/404'
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: Home,
         meta: {auth: false},
     },
     {
-        path: '/portal/cars',
-        name: 'portal.cars.list',
+        path: '/portal/orders',
+        name: 'portal.orders.list',
+        component: OrdersList,
+        meta: {auth: false}, // @todo
+    },
+    {
+        path: '/portal/vehicles',
+        name: 'portal.vehicles.list',
         component: VehiclesList,
         meta: {auth: false}, // @todo
     },

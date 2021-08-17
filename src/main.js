@@ -20,6 +20,9 @@ Vue.use(platon, {
 import PlatonUI from 'platon-ui'
 Vue.use(PlatonUI)
 
+import {FiltersInstaller} from './filters'
+Vue.use(FiltersInstaller)
+
 Vue.config.productionTip = false
 
 new Vue({

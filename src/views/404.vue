@@ -8,7 +8,7 @@
     import AuthedUserLayout from '@/views/layouts/AuthedUser'
 
     export default {
-        name: 'Home',
+        name: 'page-404',
         data() {
             return {
 

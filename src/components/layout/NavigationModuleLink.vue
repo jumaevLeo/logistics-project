@@ -1,5 +1,5 @@
 <template>
-    <li class="p-3 position-relative">
+    <li class="p-3 position-relative" @click="showModuleItems">
         <a href="#" class="p-3" :class="{active, [`is-${type}`]: true}">
             <p-icon size="is-large" :icon="item.icon"></p-icon>
         </a>
@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: 'NavigationLink',
+        name: 'navigation-module-link',
 
         props: {
             item: {
@@ -17,10 +17,24 @@
                 type: Object,
             },
             type: {},
+
+            chosenModule: {
+                type: Number,
+            }
+        },
+
+        methods: {
+            showModuleItems() {
+                this.$emit('module:show', this.item.id)
+            }
         },
 
         computed: {
             active() {
+                if (this.chosenModule) {
+                    return this.item.id === this.chosenModule
+                }
+
                 return this.$route.name.startsWith(this.item.route)
             }
         }

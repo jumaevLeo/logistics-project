@@ -6,7 +6,10 @@
             </div>
 
             <ul class="modules-menu-container d-flex flex-column text-center">
-                <NavigationModuleLink v-for="(module, key) in modules" :item="module" :key="key"></NavigationModuleLink>
+                <NavigationModuleLink v-for="(module, key) in modules" :item="module" :key="key"
+                                      :chosen-module="activeModuleId"
+                                      @module:show="showModuleItems"
+                ></NavigationModuleLink>
             </ul>
 
             <ul class="modules-menu-container d-flex flex-column text-center">
@@ -31,11 +34,23 @@
     import NavigationLink from '@/components/layout/NavigationLink'
     import NavigationModuleLink from '@/components/layout/NavigationModuleLink'
     import {mapState, mapMutations} from 'vuex'
+
     export default {
-        name: 'NavigationDrawer',
+        name: 'navigation-drawer',
 
         data() {
             return {
+                activeModuleId: null,
+                menus: [
+                    {id: 1, parent_id: 1, route: 'portal.orders.find', icon: 'mdi mdi-layers-outline', label: 'Найти груз', count: 8,},
+                    {id: 2, parent_id: 1, route: 'portal.vehicles.list', icon: 'mdi mdi-truck-outline', label: 'Мои машины', count: 0,},
+                    {id: 3, parent_id: 1, route: 'portal.reviews.list', icon: 'mdi mdi-thumb-up-outline', label: 'Отклики', count: 0,},
+                    {id: 4, parent_id: 1, route: 'portal.orders.list', icon: 'mdi mdi-checkbox-marked-circle-outline', label: 'Сделки', count: 0,},
+                    {id: 5, parent_id: 1, route: 'portal.reports', icon: 'mdi mdi-chart-donut', label: 'Статистика', count: 0,},
+                    {id: 6, parent_id: 1, route: 'portal.orders.archive', icon: 'mdi mdi-package-down', label: 'Архивные сделки', count: 0,},
+                    {id: 8, parent_id: 3, route: 'settings.notifications', icon: 'mdi mdi-notification', label: 'Оповещения', count: 0,},
+                    {id: 7, parent_id: 2, route: 'settings.cards', icon: 'mdi mdi-card', label: 'Карточки', count: 0,},
+                ],
             }
         },
 
@@ -51,31 +66,26 @@
             },
 
             menuItems() {
-                const menus = [
-                    {id: 1, parent_id: 1, route: 'portal.orders.find', icon: 'mdi mdi-layers-outline', label: 'Найти груз', count: 8,},
-                    {id: 2, parent_id: 1, route: 'portal.cars.list', icon: 'mdi mdi-truck-outline', label: 'Мои машины', count: 0,},
-                    {id: 3, parent_id: 1, route: 'portal.reviews.list', icon: 'mdi mdi-thumb-up-outline', label: 'Отклики', count: 0,},
-                    {id: 4, parent_id: 1, route: 'portal.orders', icon: 'mdi mdi-checkbox-marked-circle-outline', label: 'Сделки', count: 0,},
-                    {id: 5, parent_id: 1, route: 'portal.reports', icon: 'mdi mdi-chart-donut', label: 'Статистика', count: 0,},
-                    {id: 6, parent_id: 1, route: 'portal.orders.archive', icon: 'mdi mdi-package-down', label: 'Архивные сделки', count: 0,},
-                    {id: 8, parent_id: 3, route: 'settings.notifications', icon: 'mdi mdi-notification', label: 'Оповещения', count: 0,},
-                    {id: 7, parent_id: 3, route: 'settings.cards', icon: 'mdi mdi-card', label: 'Карточки', count: 0,},
-                ]
-
-                let parentId = menus.find(m => m.route === (this.$route.name || 'portal.orders.find')).parent_id
-
-                return menus.filter(m => m.parent_id === parentId)
+                return this.menus.filter(m => m.parent_id === this.activeModuleId)
             },
         },
 
         methods: {
             ...mapMutations(['setDrawer']),
+
+            showModuleItems(val) {
+                this.activeModuleId = val
+            },
+        },
+
+        created() {
+            this.activeModuleId = this.menus.find(m => m.route === (this.$route.name || 'portal.orders.find')).parent_id
         },
 
         components: {
             NavigationLink,
             NavigationModuleLink,
-        }
+        },
     }
 </script>
 

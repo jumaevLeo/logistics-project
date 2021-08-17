@@ -20,7 +20,7 @@
     import {mapState} from 'vuex'
 
     export default {
-        name: 'NavigationLink',
+        name: 'navigation-link',
 
         props: {
             item: {
