@@ -1,6 +1,10 @@
 import moment from 'moment'
 
 export const filters = {
+  time(date) {
+    return date ? moment(date).locale('ru').format('HH:mm') : ''
+  },
+
   dateTime(date) {
     return date ? moment(date).locale('ru').format('DD MMMM, HH:mm') : ''
   },

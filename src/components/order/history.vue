@@ -8,13 +8,7 @@
                     <span v-if="item.updated_at" class="is-hint">{{item.updated_at|dateTime}}</span>
                     <p :class="{'is-hint': !item.updated_at}">{{item.description}}</p>
                     <div v-for="(attachment, k) in item.attachments" :key="k">
-                        <a v-if="attachment.type === 'file'" :href="attachment.url"
-                           class="d-inline-block mt-2 pui-button text-decoration-none"
-                        >
-                            <span class="is-secondary">
-                                <p-icon icon="mdi mdi-link-variant"></p-icon> {{attachment.name}}
-                            </span>
-                        </a>
+                        <attachment class="mt-2" :item="attachment"></attachment>
                     </div>
                     <p-button v-if="key + 1 === items.length" class="mt-2" type="is-primary text-white">Груз погружен</p-button>
                 </div>
@@ -25,6 +19,8 @@
 </template>
 
 <script>
+    import Attachment from '@/components/attachment';
+
     export default {
         name: 'history',
 
@@ -38,6 +34,10 @@
                 type: Array,
             }
         },
+
+        components: {
+            Attachment,
+        }
     }
 </script>
 

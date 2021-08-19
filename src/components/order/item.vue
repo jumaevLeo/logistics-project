@@ -41,7 +41,7 @@
                 </div>
                 <div>
                     <template v-if="type === 'deal'">
-                        <p-button type="is-danger" class="width-100p">
+                        <p-button type="is-danger text-white" class="width-100p">
                             Служба поддержки
                         </p-button>
                     </template>

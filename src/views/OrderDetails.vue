@@ -6,12 +6,12 @@
                 <order-list-item :item="order" type="deal"/>
             </div>
         </div>
-        <div class="row mx-2 my-4">
+        <div class="row mx-2 mt-2 mb-4">
             <div class="col-4">
                 <order-history :items="history"></order-history>
             </div>
             <div class="col-8">
-                <chat entity-type="order" entity-id="order.id"></chat>
+                <chat entity-type="order" :entity-id="order.id"></chat>
             </div>
         </div>
     </AuthedUserLayout>
