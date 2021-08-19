@@ -14,7 +14,7 @@ export const filters = {
   },
 
   money(x = 0, currency = true) {
-    return `${x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}${currency ? ' сум' : ''}`;
+    return `${x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}${currency ? ' uzs' : ''}`;
   },
 
   phone(rawPhone) {

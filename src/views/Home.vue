@@ -24,7 +24,7 @@
                     Русский
                     <p-icon icon="mdi mdi-chevron-down"/>
                 </li>
-                <li><a @click="$router.push({name: 'portal.vehicles.list'})">Вход</a></li>
+                <li><a @click="$router.push({name: 'portal.vehicles'})">Вход</a></li>
                 <li>
                     <p-button size="is-small">Регистрация</p-button>
                 </li>
@@ -44,24 +44,10 @@
             </div>
         </div>
         <div class="position-relative container-small form-container px-5 width-100p">
-            <h4 class="mb-2">Рассчитать стоимость перевозки</h4>
-            <div class="row">
-                <div class="col-3">
-                    <p-select v-model="search.from" label='Откуда' :options="fromOptions"/>
-                </div>
-                <div class="col-3">
-                    <p-select v-model="search.to" label='Куда' :options="toOptions"/>
-                </div>
-                <div class="col-2">
-                    <p-select v-model="search.type" label='Тип груза' :options="cargoTypes"/>
-                </div>
-                <div class="col-2">
-                    <p-select v-model="search.weight_category" label='Вес' :options="weightCategories"/>
-                </div>
-                <div class="col-2">
-                    <p-button class="width-100p" style="height: 3.5rem;">Рассчитать</p-button>
-                </div>
-            </div>
+            <h4 class="mb-2">Рассчитать стоимость перевозки <span class="is-danger">*</span></h4>
+
+            <order-search-form search-text="Рассчитать" :wrapped="false"></order-search-form>
+
             <p class="is-hint mt-3">
                 <span class="text-danger b-toaster-top-right">*</span>
                 Стоимость перевозки рассчитывается исходя из средних показателей предложенния на рынке исполнителей.
@@ -181,6 +167,8 @@
 </template>
 
 <script>
+    import OrderSearchForm from '@/components/order/searchForm'
+
     export default {
         name: 'home',
 
@@ -214,6 +202,10 @@
                     {key: 'больше 50т', value: 3},
                 ],
             }
+        },
+
+        components: {
+            OrderSearchForm,
         }
     }
 </script>
@@ -247,10 +239,6 @@
 
     .pui-select {
         background: white !important;
-    }
-
-    .form-elem {
-        box-sizing: border-box;
     }
 
     .mobile-app-info-container {

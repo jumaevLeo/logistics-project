@@ -1,8 +1,10 @@
 $primary-color: #72B819;
+$primary-accent-color: #72B819;
 $secondary-color: #2979FF;
 $secondary-accent-color: #E0ECFF;
 $hint-color: #989898;
 $hint-accent-color: #E8EAEE;
+$hint-border-color: #F5F7FB;
 $danger-color: #FF4269;
 $danger-accent-color: rgba(255, 66, 105, .3);
 $warning-color: #FF8A00;
@@ -38,6 +40,10 @@ $link-primary-color: #7B7D81;
   border-color: $secondary-accent-color !important;
 }
 
-.bd-muted {
+.bd-hint {
   border-color: $hint-color !important;
+}
+
+.bg-hint {
+  background: $hint-color !important;
 }

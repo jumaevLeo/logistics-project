@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-8">
                     <p class="text-lg">
-                        {{item.brand}}
+                        <span class="align-middle">{{item.brand}}</span>
                         <b-form-rating class="align-middle" :value="item.rating" variant="warning" no-border readonly size="sm" inline precision="1"></b-form-rating>
                         <a class="is-hint is-underlined text-sm align-middle">{{item.reviews_count}} отзыва</a>
                     </p>

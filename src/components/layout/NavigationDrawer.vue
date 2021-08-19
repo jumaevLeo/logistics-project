@@ -43,9 +43,9 @@
                 activeModuleId: null,
                 menus: [
                     {id: 1, parent_id: 1, route: 'portal.orders.find', icon: 'mdi mdi-layers-outline', label: 'Найти груз', count: 8,},
-                    {id: 2, parent_id: 1, route: 'portal.vehicles.list', icon: 'mdi mdi-truck-outline', label: 'Мои машины', count: 0,},
-                    {id: 3, parent_id: 1, route: 'portal.reviews.list', icon: 'mdi mdi-thumb-up-outline', label: 'Отклики', count: 0,},
-                    {id: 4, parent_id: 1, route: 'portal.orders.list', icon: 'mdi mdi-checkbox-marked-circle-outline', label: 'Сделки', count: 0,},
+                    {id: 2, parent_id: 1, route: 'portal.vehicles', icon: 'mdi mdi-truck-outline', label: 'Мои машины', count: 0,},
+                    {id: 3, parent_id: 1, route: 'portal.reviews', icon: 'mdi mdi-thumb-up-outline', label: 'Отклики', count: 0,},
+                    {id: 4, parent_id: 1, route: 'portal.orders', icon: 'mdi mdi-checkbox-marked-circle-outline', label: 'Сделки', count: 0,},
                     {id: 5, parent_id: 1, route: 'portal.reports', icon: 'mdi mdi-chart-donut', label: 'Статистика', count: 0,},
                     {id: 6, parent_id: 1, route: 'portal.orders.archive', icon: 'mdi mdi-package-down', label: 'Архивные сделки', count: 0,},
                     {id: 8, parent_id: 3, route: 'settings.notifications', icon: 'mdi mdi-notification', label: 'Оповещения', count: 0,},
@@ -79,7 +79,7 @@
         },
 
         created() {
-            this.activeModuleId = this.menus.find(m => m.route === (this.$route.name || 'portal.orders.find')).parent_id
+            this.activeModuleId = this.menus.find(m => this.$route.name.startsWith(m.route)).parent_id
         },
 
         components: {
@@ -95,7 +95,7 @@
 
     #navigation-drawer-container {
         transition: width 0.3s ease-in-out;
-        background: #F5F7FB;
+        background: $hint-border-color;
         height: 100vh;
         border-right: 1px solid $hint-accent-color;
         width: 350px;
