@@ -7,22 +7,41 @@
                         <img src="@/assets/img/logo.svg" :alt="$appName">
                     </a>
                 </li>
-                <li>Заказчику
-                    <p-icon icon="mdi mdi-chevron-down"/>
+                <li>
+                    <p-dropdown class="cursor-pointer">
+                        <template #trigger>
+                            Исполнителю <p-icon icon="mdi mdi-chevron-down"/>
+                        </template>
+                        <p-dropdown-item v-for="(execMenu, i) in executorMenus" :key="i"
+                                         @click="$router.push({name: execMenu.route})"
+                        >{{execMenu.name}}</p-dropdown-item>
+                    </p-dropdown>
                 </li>
-                <li>Исполнителю
-                    <p-icon icon="mdi mdi-chevron-down"/>
+                <li>
+                    <p-dropdown class="cursor-pointer">
+                        <template #trigger>
+                            Исполнителю <p-icon icon="mdi mdi-chevron-down"/>
+                        </template>
+                        <p-dropdown-item v-for="(execMenu, i) in executorMenus" :key="i"
+                                         @click="$router.push({name: execMenu.route})"
+                        >{{execMenu.name}}</p-dropdown-item>
+                    </p-dropdown>
                 </li>
                 <li class="is-warning">
                     <p-icon icon="mdi mdi-crown-outline"/>
                     Premium
                 </li>
             </ul>
+
+
             <ul class="p-toolbar-list">
                 <li>
-                    <p-icon icon="mdi mdi-web"/>
-                    Русский
-                    <p-icon icon="mdi mdi-chevron-down"/>
+                    <p-dropdown class="cursor-pointer">
+                        <template #trigger>
+                            <p-icon icon="mdi mdi-web"/> {{langs.find(l => l.id = lng).name}} <p-icon icon="mdi mdi-chevron-down"/>
+                        </template>
+                        <p-dropdown-item v-for="(lng, i) in langs" :key="i" @click="setLang(lng.id)">{{lng.name}}</p-dropdown-item>
+                    </p-dropdown>
                 </li>
                 <li><a @click="$router.push({name: 'portal.vehicles'})">Вход</a></li>
                 <li>
@@ -201,6 +220,30 @@
                     {key: '20-50т', value: 2},
                     {key: 'больше 50т', value: 3},
                 ],
+                lng: 'ru',
+                langs: [
+                    {id: 'ru', name: 'Русский'},
+                    {id: 'uz', name: 'O\'zbekcha'},
+                    {id: 'uz-cyr', name: 'Ўзбекча'},
+                    {id: 'en', name: 'English'},
+                ],
+                executorMenus: [
+                    {route: 'portal.vehicles', name: 'Исполнителью 1'},
+                    {route: 'portal.vehicles', name: 'Исполнителью 2'},
+                    {route: 'portal.vehicles', name: 'Исполнителью 3'},
+                ],
+                customerMenus: [
+                    {route: 'portal.vehicles', name: 'Заказчику 1'},
+                    {route: 'portal.vehicles', name: 'Заказчику 2'},
+                    {route: 'portal.vehicles', name: 'Заказчику 3'},
+                ]
+            }
+        },
+
+        methods: {
+            setLang(l) {
+                // @todo
+                console.log('lang is set to ' + l)
             }
         },
 

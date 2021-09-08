@@ -48,3 +48,7 @@ a {
 .pui-button.is-success {
   @extend .bg-primary;
 }
+
+.order-list-sorting.pui-dropdown-wrapper {
+  width: auto;
+}

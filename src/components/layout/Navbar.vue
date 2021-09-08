@@ -11,12 +11,18 @@
                 <i class="has-new-notifications"></i>
             </li>
             <li id="profile-menu" class="position-relative">
-                <img width="26px" height="26px" src="https://material-ui.com/static/images/avatar/2.jpg"
-                     class="rounded-circle" alt="Саломов Азиз">
-                <span class="px-2">Саломов Азиз</span>
-                <p-icon icon="is-hint mdi mdi-chevron-down"/>
+                <p-dropdown class="cursor-pointer">
+                    <template #trigger>
+                        <img width="26px" height="26px" src="https://material-ui.com/static/images/avatar/2.jpg"
+                             id="profile-menu-image" class="rounded-circle" alt="Саломов Азиз">
+                        <span id="profile-menu-text" class="px-2">Саломов Азиз</span>
+                        <p-icon icon="is-hint mdi mdi-chevron-down"/>
+                    </template>
+                    <p-dropdown-item>menu 1</p-dropdown-item>
+                    <p-dropdown-item>menu 3</p-dropdown-item>
+                    <p-dropdown-item>menu 2</p-dropdown-item>
+                </p-dropdown>
             </li>
-
         </ul>
     </div>
 </template>
@@ -39,12 +45,13 @@
 
     #main-navbar {
         #profile-menu {
-            > *:not(:last-child) {
-                vertical-align: middle;
-            }
-
-            > :last-child {
-                vertical-align: sub;
+            .pui-dropdown-trigger {
+                #profile-menu-image, #profile-menu-text {
+                    vertical-align: middle;
+                }
+                .pui-icon {
+                    vertical-align: sub;
+                }
             }
         }
 

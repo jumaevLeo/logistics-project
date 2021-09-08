@@ -9,10 +9,17 @@
                 <span>
                     <p-icon icon="mdi mdi-swap-vertical"/>
                     <span class="d-inline-block mr-2">Сортировка:</span>
-                    <span class="is-secondary">Сначала новые <p-icon icon="mdi mdi-chevron-down"/></span>
+                    <p-dropdown class="order-list-sorting cursor-pointer">
+                        <template #trigger>
+                            <span class="is-secondary">Сначала новые <p-icon icon="mdi mdi-chevron-down"/></span>
+                        </template>
+                        <p-dropdown-item>Сначала истекающие</p-dropdown-item>
+                        <p-dropdown-item>Сначала горящие</p-dropdown-item>
+                    </p-dropdown>
                 </span>
                 <grid-type-toggler v-model="gridView"/>
             </div>
+
             <div class="col py-3 pt-3">
                 <order-list-item v-for="(order, key) in orders" :key="key" type="order" :item="order"/>
             </div>
