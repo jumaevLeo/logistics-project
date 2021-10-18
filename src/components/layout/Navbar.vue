@@ -13,7 +13,7 @@
             <li id="profile-menu" class="position-relative">
                 <p-dropdown class="cursor-pointer">
                     <template #trigger>
-                        <img width="26px" height="26px" src="https://material-ui.com/static/images/avatar/2.jpg"
+                        <img width="26px" height="26px" src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=164&h=164&fit=crop&auto=format&dpr=2 2x"
                              id="profile-menu-image" class="rounded-circle" alt="Саломов Азиз">
                         <span id="profile-menu-text" class="px-2">Саломов Азиз</span>
                         <p-icon icon="is-hint mdi mdi-chevron-down"/>
