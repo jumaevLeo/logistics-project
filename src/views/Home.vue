@@ -184,7 +184,7 @@
         </footer>
         <p-modal 
             :active.sync="isChecked"
-            title="РегистрацияW"
+            title="Регистрация"
             class="registr_from"
         >
             <template>
