@@ -45,7 +45,7 @@
                 </li>
                 <li><a @click="$router.push({name: 'portal.vehicles'})">Вход</a></li>
                 <li>
-                    <p-button size="is-small">Регистрация</p-button>
+                    <p-button size="is-small" @click="isChecked=!isChecked">Регистрация</p-button>
                 </li>
             </ul>
         </div>
@@ -182,6 +182,51 @@
                 © {{year}} — OOO «Carting»
             </div>
         </footer>
+        <p-modal 
+            :active.sync="isChecked"
+            title="Регистрация"
+            class="registr_from"
+        >
+            <template>
+                <div><p-input 
+                        v-model="user_phone" 
+                        label="Введите номер телефона"
+                        icon="mdi mdi-phone"
+                        maxlength="13"
+                        style="font-size:18px;"
+                    />
+                </div>
+                <div style="display:flex;flex-firection:row;">
+                    <p-checkbox v-model="user_agree" type="is-success"/>
+                    <span style="margin-top:20px;margin-left:10px;">Я согласен с <a style="color:#2979FF;">правилами использования личных данных</a></span>
+                </div>
+            </template>
+            <template v-slot:footer class="registr_footer">
+                <div class="pui-button is-primary registr_btn" :disabled='isDisabled' v-on:click="goSms()"><span class="text">Продолжить</span></div>
+            </template>
+        </p-modal>
+        <p-modal 
+            :active.sync="isNinja"
+            title="Регистрация"
+            class="registr_from"
+        >
+            <template>
+                <div style="text-align:center;">Код потверждения был выслан на номер</div>
+                <div style="text-align:center;">+998 93 652 45 65 (<a v-on:click="goRegistr()" style="color:#2979FF;">изменить</a>)</div>
+            </template>
+            <template>
+                <div style="text-align:center;margin-top:15px;letter-spacing: 12px !important;">
+                    <p-input 
+                        v-model="user_phone_sms"
+                        maxlength="4"
+                        id="sms_input"
+                    />
+                </div>
+            </template>
+            <template v-slot:footer class="registr_footer">
+                <div class="pui-button is-primary registr_btn"><span class="text">Продолжить</span></div>
+            </template>
+        </p-modal>
     </div>
 </template>
 
@@ -193,6 +238,11 @@
 
         data() {
             return {
+                isChecked:false,
+                user_phone:null,
+                user_phone_sms:null,
+                user_agree:false,
+                isNinja:false,
                 year: (new Date).getFullYear(),
                 search: {
                     from: 'TASH',
@@ -240,10 +290,25 @@
             }
         },
 
+        computed: {
+            isDisabled: function(){
+                return !this.user_agree;
+            }
+        },
+
         methods: {
             setLang(l) {
                 // @todo
                 console.log('lang is set to ' + l)
+            },
+            goSms() {
+                this.isChecked = false;
+                this.isNinja = true;
+            },
+            goRegistr() {
+                this.isChecked = true;
+                this.isNinja = false;
+                document.getElementById('sms_input').value = '';
             }
         },
 
@@ -255,6 +320,35 @@
 
 <style lang="scss">
     @import '@/assets/styles/_colors';
+
+    .pui-modal {
+        width: 400px;
+
+        & .header {
+            margin-left: 110px;
+            border-bottom-width:0;
+        }
+        & .footer {
+            justify-content: center !important;
+        }
+    }
+
+    .registr_btn {
+        width: 92%;
+        text-align: center;
+    }
+
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }   
+
+    #sms_input {
+        width: 150px;
+        font-size:24px;
+        letter-spacing: 13px !important;
+        padding-left: 28px !important;
+    }
 
     .call-to-action-bar {
         min-height: 450px;
