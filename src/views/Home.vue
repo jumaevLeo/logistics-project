@@ -43,7 +43,7 @@
                         <p-dropdown-item v-for="(lng, i) in langs" :key="i" @click="setLang(lng.id)">{{lng.name}}</p-dropdown-item>
                     </p-dropdown>
                 </li>
-                <li><a @click="$router.push({name: 'portal.vehicles'})">Вход</a></li>
+                <li><a @click="enterance=!enterance">Вход</a></li>
                 <li>
                     <p-button size="is-small" @click="isChecked=!isChecked">Регистрация</p-button>
                 </li>
@@ -193,7 +193,17 @@
                         label="Введите номер телефона"
                         icon="mdi mdi-phone"
                         maxlength="13"
-                        style="font-size:18px;"
+                    />
+                </div>
+                <div><p-select 
+                        v-model="user_permission"
+                        icon="mdi mdi-application"
+                        label="Чем вы занимаетесь"
+                        :options="[
+                            {key: 'покупатель', value: 'customer'},
+                            {key: 'поставщик услуг', value: 'service'},
+                            {key: 'диспетчер', value: 'dispatcher'},
+                        ]"
                     />
                 </div>
                 <div style="display:flex;flex-firection:row;">
@@ -205,7 +215,7 @@
                 <div class="pui-button is-primary registr_btn" :disabled='isDisabled' v-on:click="goSms()"><span class="text">Продолжить</span></div>
             </template>
         </p-modal>
-        <p-modal 
+        <p-modal
             :active.sync="isNinja"
             title="Регистрация"
             class="registr_from"
@@ -223,8 +233,42 @@
                     />
                 </div>
             </template>
+            <template>
+                <div style="text-align:center;color:grey;"><span>Переслать сообщение (00:{{min}}{{count_minute}})</span></div>
+            </template>
+        </p-modal>
+        <p-modal
+            :active.sync="enterance"
+            class="registr_from"
+        >
+            <template>
+                <div style="text-align:center;margin-bottom:10px;font-size:21px;">LOG IN</div>
+            </template>
+            <template>
+                <div><p-input 
+                        v-model="username" 
+                        label="username"
+                        icon="mdi mdi-account"
+                    />
+                </div>
+            </template>
+            <template>
+                <div><p-input 
+                        v-model="password" 
+                        label="password"
+                        icon="mdi mdi-lock"
+                        id="inputPassword"
+                        type="password"
+                    />
+                </div>
+            </template>
+            <template>
+                <div style="text-align:right;color:grey;font-size:13px !important;cursor:pointer;" @click="goTo_registr()">
+                    <span class="btnRegist">Зарегистироваться</span>
+                </div>
+            </template>
             <template v-slot:footer class="registr_footer">
-                <div class="pui-button is-primary registr_btn"><span class="text">Продолжить</span></div>
+                <div class="pui-button is-primary registr_btn" @click="$router.push({name: 'portal.orders.find'})"><span class="text">Войти</span></div>
             </template>
         </p-modal>
     </div>
@@ -238,11 +282,17 @@
 
         data() {
             return {
+                username:null,
+                password:null,
+                enterance:false,
                 isChecked:false,
                 user_phone:null,
+                user_permission:null,
                 user_phone_sms:null,
                 user_agree:false,
                 isNinja:false,
+                min:'',
+                count_minute:59,
                 year: (new Date).getFullYear(),
                 search: {
                     from: 'TASH',
@@ -292,23 +342,55 @@
 
         computed: {
             isDisabled: function(){
-                return !this.user_agree;
+                return (!this.user_agree || !this.user_permission || !this.user_phone);
             }
         },
-
+        mounted() {
+            
+        },
         methods: {
             setLang(l) {
                 // @todo
                 console.log('lang is set to ' + l)
             },
+            goTo_registr() {
+                this.enterance = false;
+                this.isChecked = true;
+            },
+            countDownTimer() {
+                if(this.count_minute > 0 && this.isNinja == true) {
+                    if(this.user_phone_sms){
+                        if(this.user_phone_sms.toString().length==4) {
+                            this.isNinja = false;
+                            this.enterance = true;
+                            this.count_minute=null;
+                            this.user_phone_sms=null;
+                        }
+                    }
+                    setTimeout(() => {
+                        this.count_minute -= 1;
+                        if(this.count_minute<10) {
+                            this.min = 0;
+                        }else {
+                            this.min = null;
+                        }
+                        this.countDownTimer();
+                    }, 1000)
+                }
+            },
             goSms() {
-                this.isChecked = false;
-                this.isNinja = true;
+                if(this.user_agree!=false && this.user_permission!=null && this.user_phone!=null) {
+                    this.count_minute = 59;
+                    this.min = null;
+                    this.isChecked = false;
+                    this.isNinja = true;
+                    this.countDownTimer();
+                }
             },
             goRegistr() {
                 this.isChecked = true;
                 this.isNinja = false;
-                document.getElementById('sms_input').value = '';
+                this.user_phone_sms = null;
             }
         },
 
@@ -336,6 +418,11 @@
     .registr_btn {
         width: 92%;
         text-align: center;
+    }
+
+    .btnRegist:hover {
+        border-bottom:1px solid grey;
+        transition: .3s linear;
     }
 
     .disabledbutton {

@@ -8,6 +8,7 @@ import VehiclesList from '@/views/VehiclesList'
 import OrdersList from '@/views/OrdersList'
 import Page404 from '@/views/404'
 import SearchOrders from '@/views/SearchOrders'
+import SettingsMain from "@/views/SettingsMain"
 import OrderDetails from "@/views/OrderDetails";
 
 const routes = [
@@ -30,14 +31,21 @@ const routes = [
         meta: {auth: false}, // @todo
     },
     {
-        path: '/portal/orders/:id',
+        path: '/portal/orders/details',  // -> /:id
         name: 'portal.orders.details',
+        meta: {auth: false}, // @todo
         component: OrderDetails,
     },
     {
         path: '/portal/vehicles',
         name: 'portal.vehicles',
         component: VehiclesList,
+        meta: {auth: false}, // @todo
+    },
+    {
+        path: '/settings/main',
+        name: 'settings.main',
+        component: SettingsMain,
         meta: {auth: false}, // @todo
     },
     {

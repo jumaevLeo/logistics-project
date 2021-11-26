@@ -49,7 +49,12 @@
                     {id: 5, parent_id: 1, route: 'portal.reports', icon: 'mdi mdi-chart-donut', label: 'Статистика', count: 0,},
                     {id: 6, parent_id: 1, route: 'portal.orders.archive', icon: 'mdi mdi-package-down', label: 'Архивные сделки', count: 0,},
                     {id: 8, parent_id: 3, route: 'settings.notifications', icon: 'mdi mdi-notification', label: 'Оповещения', count: 0,},
-                    {id: 7, parent_id: 2, route: 'settings.cards', icon: 'mdi mdi-card', label: 'Карточки', count: 0,},
+                    // {id: 7, parent_id: 2, route: 'settings.cards', icon: 'mdi mdi-card', label: 'Карточки', count: 0,},
+                    {id: 9, parent_id: 2, route: 'settings.main', icon: 'mdi mdi-layers-outline', label: 'Основные', count: 0,},
+                    {id: 10, parent_id: 2, route: 'settings.payments', icon: 'mdi mdi-credit-card', label: 'Платежи', count: 0,},
+                    {id: 11, parent_id: 2, route: 'settings.follows', icon: 'mdi mdi-crown', label: 'Подписка', count: 0,},
+                    {id: 12, parent_id: 2, route: 'settings.defense', icon: 'mdi mdi-security', label: 'Безопасность', count: 0,},
+                    {id: 13, parent_id: 2, route: 'settings.others', icon: 'mdi mdi-lock-outline', label: 'Входы', count: 0,},
                 ],
             }
         },
